@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: "Duong Van (@yanagi.dev)",
   tagline: 'A getting good potato',
-  url: 'https://yanagi.github.io',
+  url: 'https://yanaginx.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
