@@ -8,19 +8,19 @@ Note taken from the course SystemVerilog OOP for UVM on Verification Academy
 
 ## Good reads
 
-[Object handles](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#object-handles) 
+[Object handles](systemverilog-oop-for-uvm#object-handles) 
 
-[Copying handles vs copying objects](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#copying-handles-vs-copying-objects) 
+[Copying handles vs copying objects](systemverilog-oop-for-uvm#copying-handles-vs-copying-objects) 
 
-[Inheritance and Polymorphism](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#inheritance-and-polymorphism) 
+[Inheritance and Polymorphism](systemverilog-oop-for-uvm#inheritance-and-polymorphism) 
 
-[Parameterized classes](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#parameterized-classes) 
+[Parameterized classes](systemverilog-oop-for-uvm#parameterized-classes) 
 
-[Singleton with local qualifiers](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#singleton-with-local-qualifiers) 
+[Singleton with local qualifiers](systemverilog-oop-for-uvm#singleton-with-local-qualifiers) 
 
-[Factory pattern](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#factory-pattern) 
+[Factory pattern](systemverilog-oop-for-uvm#factory-pattern) 
 
-[Factory registration](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6#factory-registration) 
+[Factory registration](systemverilog-oop-for-uvm#factory-registration) 
 
 ## Classes
 
