@@ -1,3 +1,7 @@
+---
+slug: systemverilog-oop-for-uvm
+---
+
 # SystemVerilog OOP for UVM
 
 Note taken from the course SystemVerilog OOP for UVM on Verification Academy

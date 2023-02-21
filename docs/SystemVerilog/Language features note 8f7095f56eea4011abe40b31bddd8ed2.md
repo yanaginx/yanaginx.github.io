@@ -1,3 +1,7 @@
+---
+slug: language-features-note
+---
+
 # Language features note
 
 - For multiple  **`@`**  inside a block:
