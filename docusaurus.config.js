@@ -90,6 +90,14 @@ const config = {
             to: '/docs',
           },
       },
+      announcementBar: {
+        id: 'announcementBar-2',
+        content:
+          'Howdy! This site is still under construction so there might be some missing content. Hope you still enjoy your stay here!',
+        // backgroundColor: '#fafbfc',
+        // textColor: '#091E42',
+        isCloseable: true,
+      },
       navbar: {
         title: 'YNG',
         logo: {
@@ -165,6 +173,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Duong Van (@yanagi.dev). Powered by Docusaurus.`,
       },
       prism: {
+        additionalLanguages: ['verilog', 'latex'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
