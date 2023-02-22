@@ -267,6 +267,8 @@ The result when dumping signals, by adding some signals on `top_th.sv` and a lit
 
 This result concludes the ability to manipulate the module that is instantiated on the `top` from a test component in UVM testbench
 
+Full testbench can be found [here](https://github.com/yanaginx/uvm-module-access).
+
 ## Summary
 
 - Create a virtual class extending `uvm_object` (for example `VC`)
