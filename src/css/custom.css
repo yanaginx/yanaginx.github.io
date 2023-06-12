@@ -5,7 +5,7 @@
  */
 
 /* You can override the default Infima variables here. */
-/*
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -17,40 +17,10 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
-*/
 
-:root {
-  --ifm-color-primary: #8f3f71;
-  --ifm-color-primary-dark: #813966;
-  --ifm-color-primary-darker: #7a3660;
-  --ifm-color-primary-darkest: #642c4f;
-  --ifm-color-primary-light: #9d457c;
-  --ifm-color-primary-lighter: #a44882;
-  --ifm-color-primary-lightest: #b55792;
-  --ifm-background-color: #fcfcfc;
-  --ifm-color-black: #282828;
-  --ifm-font-color-base: #282828;
-  --ifm-menu-color: #282828;
-  --ifm-font-color-base-inverse: #ebdbb2;
-  --ifm-font-color-secondary: #282828;
-  /* --ifm-color-black: #282828;
-  --ifm-color-white: #fbf1c7;
-  --ifm-background-color: #fbf1c7;
-  --ifm-color-gray-100: #e1d8b3;
-  --ifm-color-gray-200: #c8c09f;
-  --ifm-color-gray-300: #afa88b;
-  --ifm-color-gray-400: #969077;
-  --ifm-color-gray-500: #7d7863;
-  --ifm-color-gray-600: #64604f;
-  --ifm-color-gray-700: #4b483b;
-  --ifm-color-gray-800: #323027;
-  --ifm-color-gray-900: #191813; */
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-}
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-/*
+
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -61,38 +31,6 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
-*/
-
-[data-theme='dark'] {
-  --ifm-color-primary: #39b5e0;
-  --ifm-color-primary-dark: #22abdb;
-  --ifm-color-primary-darker: #20a2cf;
-  --ifm-color-primary-darkest: #1b85aa;
-  --ifm-color-primary-light: #51bee4;
-  --ifm-color-primary-lighter: #5dc3e6;
-  --ifm-color-primary-lightest: #82d0eb;
-  --ifm-background-color: #282828;
-  --ifm-font-color-base: #ebdbb2;
-  --ifm-menu-color: #ebdbb2;
-  --ifm-font-color-base-inverse: #282828;
-  --ifm-font-color-secondary: #ebdbb2;
-  /* --ifm-color-content: #ebdbb2; */
-  /* --ifm-color-content-inverse: #282828;
-  --ifm-color-content-secondary: #ebdbb2; */
-  --ifm-color-black: #282828;
-  --ifm-color-white: #ebdbb2;
-  --ifm-color-gray-100: #d3c5a0;
-  --ifm-color-gray-200: #bcaf8e;
-  --ifm-color-gray-300: #a4997c;
-  --ifm-color-gray-400: #8d836a;
-  --ifm-color-gray-500: #756d59;
-  --ifm-color-gray-600: #5e5747;
-  --ifm-color-gray-700: #464135;
-  --ifm-color-gray-800: #2f2b23;
-  --ifm-color-gray-900: #171511;
-  --ifm-toc-border-color: #ebdbb2;
-  --ifm-toc-link-color: #ebdbb2;
 
 
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
+

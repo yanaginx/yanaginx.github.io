@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Placeholder for something',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'My notes and documentation',
+    Svg: require('@site/static/img/microcon.svg').default,
     description: (
       <>
-        Consists of a title, a description, and an image.
+        All about SystemVerilog, UVM and Verification related topics.
       </>
     ),
   },

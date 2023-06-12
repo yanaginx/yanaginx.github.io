@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Duong Van (@yanagi.dev)",
-  tagline: 'A getting good potato',
+  tagline: 'Design Verification Engineer',
   url: 'https://yanaginx.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -80,16 +80,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      algolia: {
-        appId: 'X1Z85QJPUV',
-        apiKey: 'bf7211c161e8205da2f933a02534105a',
-        indexName: 'docusaurus-2',
-        replaceSearchResultPathname:
-          {
-            from: /^\/docs\/next/g,
-            to: '/docs',
-          },
-      },
+      // algolia: {
+      //   appId: 'X1Z85QJPUV',
+      //   apiKey: 'bf7211c161e8205da2f933a02534105a',
+      //   indexName: 'docusaurus-2',
+      //   replaceSearchResultPathname:
+      //     {
+      //       from: /^\/docs\/next/g,
+      //       to: '/docs',
+      //     },
+      // },
       announcementBar: {
         id: 'announcementBar-2',
         content:
@@ -99,7 +99,7 @@ const config = {
         isCloseable: true,
       },
       navbar: {
-        title: 'YNG',
+        title: 'DV',
         logo: {
           alt: 'YNG.dev Logo',
           src: 'img/logo-main.svg',
@@ -113,7 +113,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            to: '/extras/personal-info', 
+            to: '/extras/site-info', 
             label: 'Extras', 
             position: 'left',
             activeBaseRegex: '/extras'
