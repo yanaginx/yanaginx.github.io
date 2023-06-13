@@ -12,7 +12,7 @@ slug: setting-up-the-register-layer
 
 ## UVM Registers are Layered
 
-******************************UVM Register Layer provides protocol-independent register-based layering******************************
+*UVM Register Layer provides protocol-independent register-based layering*
 
 ![Untitled](Setting%20up%20the%20Register%20Layer%20cac69577d55b4842a42551179a5b03ff/Untitled%201.png)
 
@@ -21,7 +21,7 @@ slug: setting-up-the-register-layer
 
 ## UVM Register use models
 
-### **************************************Stimulus generation**************************************
+### *Stimulus generation*
 
 - Firmware-level abstraction of stimulus:
     - i.e. Set this bit in this register rather than write x to address y
@@ -91,13 +91,13 @@ In the register block `build` method:
 
 ## The Register Map - `uvm_reg_map`
 
-******************************************Contains offsets for:******************************************
+*Contains offsets for:*
 
 - Registers and Memories
 - (Hierarchical blocks)
 - (Sub-maps)
 
-******************************************************************************Also provides means to access registers******************************************************************************
+*Also provides means to access registers*
 
 - Handle for the target sequencer
     
@@ -111,7 +111,7 @@ In the register block `build` method:
     > A specialize handler manage the job of the translation sequence mentioned before
     > 
 
-************************************************A block can have > 1 map************************************************
+*A block can have > 1 map*
 
 > Since there maybe are multiple interfaces being used to access the same physical registers in the DUT
 > 
@@ -138,19 +138,19 @@ In the register block `build` method:
 
 ## How do register accesses work?
 
-**********************************************************************************************When an explicit register access method is call**********************************************************************************************
+*When an explicit register access method is call*
 
 - The register layer uses a generic register command: `Register[Read/Write](data)`
 
-******************************The register transaction is passed to the address map******************************
+*The register transaction is passed to the address map*
 
 - The map’s adapter (extended from `uvm_reg_adapter`) converts the register transaction to a bus transaction
 
-********************************************************************This is then sent through a layering to the target bus agent********************************************************************
+*This is then sent through a layering to the target bus agent*
 
 ![Untitled](Setting%20up%20the%20Register%20Layer%20cac69577d55b4842a42551179a5b03ff/Untitled%209.png)
 
-********************************************************************************Predictor updates the value of the register model********************************************************************************
+*Predictor updates the value of the register model*
 
 - Bus transaction (from the monitor) converted back to Register transaction using the adapter
 - Write: Value that was written to DUT will be reflected
@@ -158,11 +158,11 @@ In the register block `build` method:
 
 ⇒ Keeps the value in the register model is the same as the value in the physical registers
 
-**************************************************The predictor then writes the register transaction out of its `analysis_port`**
+*The predictor then writes the register transaction out of its `analysis_port`*
 
 - Generic register requests to target bus sequence items
 
-> Should be the same as the ***reconstruction monitor***
+> Should be the same as the *reconstruction monitor*
 > 
 
 ![Untitled](Setting%20up%20the%20Register%20Layer%20cac69577d55b4842a42551179a5b03ff/Untitled%2010.png)
@@ -188,11 +188,11 @@ In the register block `build` method:
 
 ## Stimulus reuse (bridge example)
 
-****************************************************SPI master is integrated inside an AHB peripheral block****************************************************
+*SPI master is integrated inside an AHB peripheral block*
 
-******************************************************************************Host bus sequences can be reused as is****************************************************************************** 
+*Host bus sequences can be reused as is* 
 
-******************************************************Testbench structure changes******************************************************
+*Testbench structure changes*
 
 ![Untitled](Setting%20up%20the%20Register%20Layer%20cac69577d55b4842a42551179a5b03ff/Untitled%2014.png)
 
@@ -203,7 +203,7 @@ In the register block `build` method:
 
 ## UVM Register Assistant
 
-************Automatically generates UVM register package************
+*Automatically generates UVM register package*
 
 - Supports all UVM access Modes
 - Registers/Fields, Memories, Blocks, Sub-blocks

@@ -8,28 +8,28 @@ slug: registered-based-testing
 
 ## Register-based analysis components
 
-**********************************************************The register model mirror value is used by analysis components**********************************************************
+*The register model mirror value is used by analysis components*
 
 - Scoreboards to check current DUT configuration
     - Where this may affect the checking algorithm
 - Functional coverage monitors
     - What is the configuration at a triggered sample?
 
-**************************************************************************************Analysis components access physical registers passively (using the backdoor accesses):**************************************************************************************
+*Analysis components access physical registers passively (using the backdoor accesses):*
 
 - No ability to drive the bus
 - Backdoor `read()` or `peek()` accesses
 
-**************************************************They look up the register model values directly**************************************************
+*They look up the register model values directly*
 
 - `spi_rm.ctrl.get_mirrored_value(data);`
 - `spi_rm.ctrl.value` or `spi_rm.ctrl.get(data);`
 
 ## Register Scoreboard guidelines
 
-**********************************************************************************************Scoreboard needs a handle to the register model**********************************************************************************************
+*Scoreboard needs a handle to the register model*
 
-**********************Scoreboard accesses register values from model**********************
+*Scoreboard accesses register values from model*
 
 **Scoreboard checks DUT register contents**
 
@@ -45,16 +45,16 @@ slug: registered-based-testing
 
 ## Functional coverage monitors
 
-******************************************************************************************************The register model has built-in functional coverage******************************************************************************************************
+*The register model has built-in functional coverage*
 
 ![Untitled](Register-Based%20Testing%206b6f30db4dc44a938eee977c6ce11452/Untitled%202.png)
 
-******************************************************A custom functional coverage monitor can be defined to sample based on significant events******************************************************
+*A custom functional coverage monitor can be defined to sample based on significant events*
 
 - Interrupts
 - Writes to certain trigger registers
 
-*************Register Assistant* generates ‘intelligent’ register access covergroup**
+*Register Assistant* generates ‘intelligent’ register access covergroup
 
 - Included in the register package code
 
@@ -82,7 +82,7 @@ slug: registered-based-testing
 
 ## Modeling memory
 
-****************************************The register model provides access to memory region****************************************
+*The register model provides access to memory region*
 
 - `mem.read()`/`mem.write()` to location x in memory y
 - The memory location address offset is calculated
@@ -93,13 +93,13 @@ slug: registered-based-testing
     ```
     
 
-********************************************************************************The model does not shadow memory regions********************************************************************************
+*The model does not shadow memory regions*
 
 - DUT memories are usually modelled separately
 - Maintaining a memory shadow is expensive
 - No `set()` / `get()` functions available
 
-****************************************************************Memory accesses can support bursts****************************************************************
+*Memory accesses can support bursts*
 
 - `mem.burst_read()`
 - `mem.burst_write()`
@@ -116,20 +116,20 @@ slug: registered-based-testing
 
 ## Register Summary
 
-**********************************************Register block contains**********************************************
+*Register block contains*
 
 - Register model
     - Fields
 - Address Map
 - Sub-blocks
 
-****************************************************************************************************************Register analysis components have register block pointer****************************************************************************************************************
+*Register analysis components have register block pointer*
 
 - Access via `get()` or backdoor read/peek
 - Use `model.reg.value` directly
 
-**************************************************************Wrap covergroups to increase flexibility**************************************************************
+*Wrap covergroups to increase flexibility*
 
-******************Use built-in test sequences for sanity checking******************
+*Use built-in test sequences for sanity checking*
 
 - Registers and memories

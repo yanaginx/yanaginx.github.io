@@ -10,26 +10,26 @@ slug: using-the-register-layer
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled.png)
 
-**************************************************************************The register model has two register variables**************************************************************************
+*The register model has two register variables*
 
 - Desired value: For when a field has been updated, but not the hardware
 - Mirrored value: Containing the latest known value from the hardware
 
-**********`reg.read()` and `reg.write()`**
+*`reg.read()` and `reg.write()`**
 
 - Access the hardware register and update the register database
 - Front door access access uses bus agent - takes time and may create side effects
 - Back door access is instant (via VPI - *Verilog Procedural Interface*) and does not cause side effects
 - Not used for individual fields
 
-**********`reg.peek()` and `reg.poke()`**
+*`reg.peek()` and `reg.poke()`*
 
 > Explicit backdoor access to the DUT register and also update the register model
 > 
 - For backdoor accesses, register model updated with result
 - Can be used for individual fields
 
-`**reg.set()` and `reg.get()`**
+*`reg.set()` and `reg.get()`*
 
 - Access the desired value directly
 
@@ -37,7 +37,7 @@ slug: using-the-register-layer
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%201.png)
 
-******************************************************************************************A typical register access only needs a few of the arguments:******************************************************************************************
+*A typical register access only needs a few of the arguments:*
 
 ```verilog
 spi_rm.ctrl.write(status, wdata, .parent(this));
@@ -48,7 +48,7 @@ spi_rm.ctrl.write(status, wdata, .parent(this));
 
 ## Front-Door access modes
 
-****************************************************************Consume time on the bus (default)****************************************************************
+*Consume time on the bus (default)*
 
 ```verilog
 spi_rm.ctrl.write(status, wdata, UVM_FRONTDOOR, .parent(this));
@@ -70,13 +70,13 @@ read_reg(model.ctrl, status, rdata, UVM_FRONTDOOR);
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%202.png)
 
-****************************Desired and mirrored values updated at the end of the transaction****************************
+*Desired and mirrored values updated at the end of the transaction*
 
 - Based on transaction contents and field access mode
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%203.png)
 
-********************************************************Can access individual fields********************************************************
+*Can access individual fields*
 
 - Only if hardware supports it
     - Field = byte lane
@@ -86,7 +86,7 @@ read_reg(model.ctrl, status, rdata, UVM_FRONTDOOR);
 
 ## Back-Door access modes
 
-****************************************************Consume no time on the bus****************************************************
+*Consume no time on the bus*
 
 ```verilog
 write_reg(model.ctrl, status, wdata, UVM_BACKDOOR);
@@ -98,27 +98,27 @@ read_reg(model.ctrl, status, rdata, UVM_BACKDOOR);
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%204.png)
 
-************************************Desired and mirrored values updated at the end of the transaction************************************
+*Desired and mirrored values updated at the end of the transaction*
 
 - Based on transaction contents and field access modes
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%205.png)
 
-**************************************************************************************************Can only access full register via backdoor access**************************************************************************************************
+*Can only access full register via backdoor access*
 
-****************Using peek/poke:****************
+*Using peek/poke:*
 
 ```verilog
 poke_reg(model.ctrl, status, wdata);
 peek_reg(model.ctrl, status, rdata);
 ```
 
-********************Desired and mirrored values updated directly at the end of the transaction********************
+*Desired and mirrored values updated directly at the end of the transaction*
 
 - Poke sets the actual register value
 - Peek samples the actual value, which is written to model
 
-**************************************Peek/Poke work on fields**************************************
+*Peek/Poke work on fields*
 
 > Peek and poke don’t care about the access mode of the register
 > 
@@ -128,9 +128,9 @@ peek_reg(model.ctrl, status, rdata);
 > Access the desired value of the register model directly
 > 
 
-****************************************************Consume no time on the bus****************************************************
+*Consume no time on the bus*
 
-******************************************************************Access the desired value directly******************************************************************
+*Access the desired value directly*
 
 ```verilog
 model.ctrl.set(wdata);
@@ -140,7 +140,7 @@ rdata = model.ctrl.get();
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%206.png)
 
-**************Use `update()` method to update actual value**
+*Use `update()` method to update actual value*
 
 - via front-door: `update_reg(model.ctrl, status, UVM_FRONTDOOR);`
 - or back-door: `update_reg(model.ctrl, status, UVM_BACKDOOR);`
@@ -157,7 +157,7 @@ rdata = model.ctrl.get();
 
 ## Mirror method
 
-**************************************************************************************Read register and update/check mirror value**************************************************************************************
+*Read register and update/check mirror value*
 
 - via front-door: `mirror_reg(model.ctrl, status, UVM_CHECK, UVM_FRONTDOOR);`
 - via back-door: `mirror_reg(model.ctrl, status, UVM_CHECK, UVM_BACKDOOR);`
@@ -168,7 +168,7 @@ rdata = model.ctrl.get();
 > The result of the mirror operation is the mirror value will be the same as the actual value, but if they are different from the beginning then the error will occur
 > 
 
-************************************************************************Can be called on field, reg or block************************************************************************
+*Can be called on field, reg or block*
 
 ![Untitled](Using%20the%20Register%20Layer%2009a6b5ff47434deab1457ad0938241fc/Untitled%209.png)
 
@@ -222,17 +222,17 @@ Extend the `uvm_reg_sequence` base class and override the register model type
 
 ## Built-in sequences
 
-**************************************************Sequences are easy to run**************************************************
+*Sequences are easy to run*
 
 - Low overhead to use
 - Useful for initial sanity checks on bus connectivity
 
-************************************Access modes are respected************************************
+*Access modes are respected*
 
 - Read only registers are not bit bashed
 - Read only memories are not tested
 
-********************************************************************************************************Memories, Registers or Fields can be opted out of a test********************************************************************************************************
+*Memories, Registers or Fields can be opted out of a test*
 
 - e.g., Clock enable bit
 - Mechanism is to use the `uvm_config_db` to set an attribute for the register
@@ -241,19 +241,19 @@ Extend the `uvm_reg_sequence` base class and override the register model type
 
 ## Summary
 
-************Register model follows hardware structure************
+*Register model follows hardware structure*
 
 - Fields, Registers, Blocks, Maps
 - Internal access - `get()`, `set()`, etc.
     - Sets up desired value
 - External access - Front door and back door
 
-************************************************Access layered via model************************************************
+*Access layered via model*
 
 - Generic sequences adapted to target bus sequences
 - Sequence reuse straight-forward
 
-**********************************************Use the convenience API**********************************************
+*Use the convenience API*
 
 - Extend `uvm_reg_sequence`
 - `write_reg()`/ `read_reg()` vs `write()` / `read()`

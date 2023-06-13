@@ -8,18 +8,18 @@ slug: layered-sequences
 
 ## Sequences and sequencers
 
-********************Most sequences run on sequences********************
+*Most sequences run on sequences*
 
 - One sequencer per agent
 - Env may define default sequence
 - Can be overridden via factory
 - Test defines other sequences
 
- ************************************************Sequences generate items************************************************
+ *Sequences generate items*
 
 - Sequencer send the items to the driver
 
-**************************************Tests require coordinating multiple sequences on multiple DUT interfaces (virtual sequencers)**************************************
+*Tests require coordinating multiple sequences on multiple DUT interfaces (virtual sequencers)*
 
 ## Virtual sequences
 
@@ -82,18 +82,18 @@ slug: layered-sequences
 
 ## Layered protocols
 
-********************Hierarchical Protocols (PCIe, USB3.0, MIPI LLI..)********************
+*Hierarchical Protocols (PCIe, USB3.0, MIPI LLI..)*
 
 - Transaction layer
 - Transport layer
 - Physical layer
 
-******************Protocol-Independent******************
+*Protocol-Independent*
 
 - Generic layer (e.g. TLM2.0 GP)
 - Specific protocol (e.g. AMBA AHB)
 
-************************************************************************************************************All require sequence items to be deconstructed and reconstructed************************************************************************************************************
+*All require sequence items to be deconstructed and reconstructed*
 
 - One-to-many:
     - High-level transaction broken down to many low-level transactions
@@ -102,11 +102,11 @@ slug: layered-sequences
 
 ### Tests start sequences
 
-******************************************Want to execute sequences at the top layer******************************************
+*Want to execute sequences at the top layer*
 
 - Test starts sequence on sequencer
 
-**************************************************Reuse as much as possible**************************************************
+*Reuse as much as possible*
 
 - Protocol agent on the bus
 - Sequencers/monitors at higher layers
@@ -117,7 +117,7 @@ slug: layered-sequences
 
 ### Adding layer
 
-************From “above”, he layer looks like a UVC************
+*From “above”, he layer looks like a UVC*
 
 - Run sequence(s) on sequencer
 - Monitor (`analysis_port`) to report activity
@@ -126,18 +126,18 @@ slug: layered-sequences
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2014.png)
 
-************Must be able to execute sequences on protocol layer************
+*Must be able to execute sequences on protocol layer*
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2015.png)
 
 ### Translation sequence
 
-**************************************************************************************Translation sequence runs on the lower sequencer**************************************************************************************
+*Translation sequence runs on the lower sequencer*
 
 - Handles the layering connection
 - Converts items between layers
 
-> ****************************************************************Have the handle to the upper level sequencer****************************************************************
+> *Have the handle to the upper level sequencer*
 > 
 
 > **Parameterized by the transaction item of the upper level sequencer**
@@ -153,32 +153,32 @@ slug: layered-sequences
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2017.png)
 
-> ****************************Do the translation to lower level transaction type as needed and send it to the driver using `start_item` and `finish_item` pair**
+> *Do the translation to lower level transaction type as needed and send it to the driver using `start_item` and `finish_item` pair*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2018.png)
 
-> ****Signal back to the upper level sequencer by calling `item_done()` method**
+> *Signal back to the upper level sequencer by calling `item_done()` method*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2019.png)
 
 <aside>
-<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="40px" /> **************************************************************This can be considered as a component behave like a driver**************************************************************
+<img src="https://www.notion.so/icons/info-alternate_blue.svg" alt="https://www.notion.so/icons/info-alternate_blue.svg" width="40px" /> *This can be considered as a component behave like a driver*
 
 </aside>
 
 ### Analysis path
 
-********************************************************************************Each layer uses a *reconstruction monitor***
+*Each layer uses a *reconstruction monitor*
 
 - The “inverse” of the translation sequence
 - Assembles high-level items from lower-level items
 
-> **************************************************Connect the `analysis_export` of the monitor `analysis_port` of the agent to receive the lower-level transaction**
+> *Connect the `analysis_export` of the monitor `analysis_port` of the agent to receive the lower-level transaction*
 > 
 
-> ****************************************The L1_mon having the analysis port to send out the higher level translated transaction****************************************
+> *The L1_mon having the analysis port to send out the higher level translated transaction*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2020.png)
@@ -190,7 +190,7 @@ slug: layered-sequences
 
 ### Layered agent
 
-> ************Having the handle of the `dut_agent` to access its sequencer**
+> *Having the handle of the `dut_agent` to access its sequencer*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2022.png)
@@ -202,7 +202,7 @@ slug: layered-sequences
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2024.png)
 
-> **************************************************************************************Run phase starting the translation sequence**************************************************************************************
+> *Run phase starting the translation sequence*
 > 
 > - Passing the up level sequencer handle (current sequencer of the Layered agent) to the sequence
 > - Start the sequence on the lower-level sequence (`dut_agent`)
@@ -211,23 +211,23 @@ slug: layered-sequences
 
 ### The environment
 
-> ******Connect components as usual******
+> *Connect components as usual*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2026.png)
 
-> ********************************Multiple layered********************************
+> *Multiple layered*
 > 
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2027.png)
 
 ### The multi-layered agent
 
-************************************************************************Encapsulate as many layers as needed************************************************************************
+*Encapsulate as many layers as needed*
 
-******************************************************************Make intermediate `analysis_ports` available as needed**
+*Make intermediate `analysis_ports` available as needed*
 
-**********************************************From “above” it looks just like an agent**********************************************
+*From “above” it looks just like an agent*
 
 ![Untitled](Layered%20Sequences%20e6bc3288bd9c4b5985542100dcef6c63/Untitled%2028.png)
 
@@ -237,19 +237,19 @@ slug: layered-sequences
 
 ## Summary
 
-*******************************************************Layering agent* has a *child sequencer* for every non-leaf-level**
+*Layering agent* has a *child sequencer* for every non-leaf-level
 
-**********************************************Creates and starts a *translation sequence* for every non-leaf-level**
+*Creates and starts a *translation sequence* for every non-leaf-level
 
 - Translation sequence will be started on lower-level sequencer
 - Translation sequence points back to higher-layer sequencers
 
-****************************May include a **********************reconstruction monitor********************** for each non-leaf-level**
+*May include a *reconstruction monitor* for each non-leaf-level
 
-********************************************************************************************Must have a handle to the leaf-level protocol agent********************************************************************************************
+*Must have a handle to the leaf-level protocol agent*
 
 - Agent may be a child of the UVC or external
 
-************************************************************************************Should create and connect an `analysis_port` for each monitor**
+*Should create and connect an `analysis_port` for each monitor
 
-************************************************************************************************Will usually have a configuration object associated with the layering agent************************************************************************************************
+*Will usually have a configuration object associated with the layering agent*

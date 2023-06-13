@@ -50,16 +50,16 @@ The macro utils will create a wrapper type that registering in the factory to al
 
 ![Untitled](Understanding%20the%20Factory%20and%20Configuration%207addb239f3544199955d06914cacc652/Untitled%203.png)
 
-`**type_id::set_type_override(<type>);` is a static methods in the wrapper**
+*`type_id::set_type_override(<type>);` is a static methods in the wrapper*
 
 > Test now have the ability to override the type of component that returned from the factory
 > 
 
-`**get_type()` returns the type "handle"**
+*`get_type()` returns the type "handle"*
 
 ![Untitled](Understanding%20the%20Factory%20and%20Configuration%207addb239f3544199955d06914cacc652/Untitled%204.png)
 
-`**set_inst_override(<type>, "<instance>");` can also be used in addition to `set_type_override` for overriding instance**
+*`set_inst_override(<type>, "<instance>");` can also be used in addition to `set_type_override` for overriding instance*
 
 ### Overriding a type
 
@@ -91,13 +91,13 @@ The macro utils will create a wrapper type that registering in the factory to al
 
 ### Tests are components, too!
 
-**********************run_test() creates the test from the factory**********************
+*run_test() creates the test from the factory*
 
 ![Untitled](Understanding%20the%20Factory%20and%20Configuration%207addb239f3544199955d06914cacc652/Untitled%2012.png)
 
 The test type instantiation will be determined using the command line plusargs `+UVM_TESTNAME`
 
-************************************************Always call `run_test()` with null argument**
+*Always call `run_test()` with null argument*
 
 > `run_test()` can be called with an argument to specify a default test to be run when there is no test name specified when running the simulation
 > 
@@ -113,9 +113,9 @@ The test type instantiation will be determined using the command line plusargs `
 
 ## Configuration database
 
-******************Explicitly typed******************
+*Explicitly typed*
 
-**************************************************************Tied to the hierarchical scopes**************************************************************
+*Tied to the hierarchical scopes*
 
 ![Untitled](Understanding%20the%20Factory%20and%20Configuration%207addb239f3544199955d06914cacc652/Untitled%2015.png)
 
@@ -133,7 +133,7 @@ The `build_phase` happens top-down, so when setting the value of driver’s x, t
 
 ### `uvm_config_db`
 
-************************************Uses a `set()`/`get()` API**
+*Uses a `set()`/`get()` API*
 
 - No casting on `get()`
 - Linked to component hierarchy
@@ -181,22 +181,22 @@ Passing virtual interface handle from the top level module to the test
 
 ## Summary
 
-****************************************************************Use `uvm_object/component_utils` macro to register with factory**
+*Use `uvm_object/component_utils` macro to register with factory*
 
-**Always call `<type>::type_id::create()`**
+*Always call `<type>::type_id::create()`*
 
-**Register tests with the factory**
+*Register tests with the factory*
 
-**Call `run_test()` with null argument**
+*Call `run_test()` with null argument*
 
 - Specify which test via the command line
 
-**Use config DB at build-time**
+*Use config DB at build-time*
 
 - Components get their config before configuring children
 - Highest set wins
 
-**************************************************Use config DB at run-time**************************************************
+*Use config DB at run-time*
 
 - Last set wins
 - Up to the “getter” to decide when it’s legal

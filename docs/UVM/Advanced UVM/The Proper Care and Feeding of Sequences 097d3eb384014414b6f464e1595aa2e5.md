@@ -35,11 +35,11 @@ TLM passing the handle of the sequence, must guarantee if the driver or any othe
 
 ### Sequence start
 
-******************Starting sequence from the test******************
+*Starting sequence from the test*
 
 ![Untitled](The%20Proper%20Care%20and%20Feeding%20of%20Sequences%20097d3eb384014414b6f464e1595aa2e5/Untitled%203.png)
 
-******Sequence can also be started from the environment also******
+*Sequence can also be started from the environment also*
 
 > Behave like background/default sequence also
 > 
@@ -125,15 +125,15 @@ TLM passing the handle of the sequence, must guarantee if the driver or any othe
 
 ## Summary
 
-**************Make sure to parameterize sequence/sequencer/driver with the same request and response types**************
+*Make sure to parameterize sequence/sequencer/driver with the same request and response types*
 
-**********Start sequences using `seq.start(sequencer)`**
+*Start sequences using `seq.start(sequencer)`*
 
-**************************************************************************************Use `seq_item_port.get_next_item/item_done` in the driver**
+*Use `seq_item_port.get_next_item/item_done` in the driver*
 
 - Use `try_next_item`/`item_done` if driver must perform idle cycles
 - Use `get`/`put` for pipelined drivers
 
-**********************************************************Use API from test or parent sequence to configure sequences**********************************************************
+*Use API from test or parent sequence to configure sequences*
 
-**************************************************************************************************************Sequence and Driver must agree on response path, if any**************************************************************************************************************
+*Sequence and Driver must agree on response path, if any*

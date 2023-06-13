@@ -60,7 +60,7 @@ Calling `new()` creates an instance and allocate memory
 
 ### Object handles
 
-A class variable only refer to a valid object → holding a ************handle************ referencing an ************object************
+A class variable only refer to a valid object → holding a *handle* referencing an *object*
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled.png)
 
@@ -198,7 +198,7 @@ By default, all class members are public
 - `local` quailifer restricts access to only within the declared class
 - `protected` qualifier restricts access to only within the declared class and an extension of that class
 
-****Abstract class****
+*Abstract class*
 
 - Can never be constructed directly
 - Can only construct class extended from base class
@@ -225,7 +225,7 @@ By default, all class members are public
         
         ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2019.png)
         
-- A generic class & actual parameter values is called a s**************pecialization**************
+- A generic class & actual parameter values is called a s*pecialization*
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2020.png)
 
@@ -281,7 +281,7 @@ By default, all class members are public
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2026.png)
 
-******Proxy class example******
+*Proxy class example*
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2027.png)
 
@@ -294,7 +294,7 @@ By default, all class members are public
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2028.png)
 
-**************Example**************
+*Example*
 
 ![Untitled](SystemVerilog%20OOP%20for%20UVM%20aa7c183de7944150b5d19d0bf1bc5ec6/Untitled%2029.png)
 

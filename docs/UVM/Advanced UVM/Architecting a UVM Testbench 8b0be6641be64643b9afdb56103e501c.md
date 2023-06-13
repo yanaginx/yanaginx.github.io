@@ -58,13 +58,13 @@ slug: architecting-a-uvm-testbench
 
 - Facilitates hierarchical instantiation and configuration
 
-****************************************************************************All others phases are called bottom-up****************************************************************************
+*All others phases are called bottom-up*
 
-**********************************************************`run_phase()` are the only task**
+*`run_phase()` are the only task*
 
 - All `run_phase` methods execute in parallel
 
-************************************************************************Don’t use alternate run-time phases************************************************************************
+*Don’t use alternate run-time phases*
 
 ![Untitled](Architecting%20a%20UVM%20Testbench%208b0be6641be64643b9afdb56103e501c/Untitled%204.png)
 
@@ -76,19 +76,19 @@ slug: architecting-a-uvm-testbench
 
 ## Summary
 
-**************************************Agents are protocol-specific**************************************
+*Agents are protocol-specific*
 
-************************************************************************************Environments define the testbench topology************************************************************************************
+*Environments define the testbench topology*
 
 - Which agents and how many
 - Other components
 
 **Base test instantiates env and handles default configuration**
 
-********************************************Extend the base test to define additional test********************************************
+*Extend the base test to define additional test*
 
 - Tweak configuration and/or factory settings
 - Start (virtual) sequence(s)
 - Test handles phase objections
 
-******************************************Keep to basic phasing******************************************
+*Keep to basic phasing*

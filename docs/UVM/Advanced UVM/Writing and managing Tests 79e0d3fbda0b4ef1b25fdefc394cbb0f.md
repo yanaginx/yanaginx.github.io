@@ -8,18 +8,18 @@ slug: writing-and-managing-tests
 
 ## What is a test?
 
-********************************************************************The environment is the “testbench”********************************************************************
+*The environment is the “testbench”*
 
 - Defines what components are needed to verify the DUT
 - Specifies defaults
 
-******************The test’s job is to “tweak” the tesbench******************
+*The test’s job is to “tweak” the tesbench*
 
 - Configuration
 - Factory overrides
 - Additional sequences
 
-********************The test’s other job is to ensure that the simulation ends********************
+*The test’s other job is to ensure that the simulation ends*
 
 ## Defaults in UVM
 
@@ -70,26 +70,26 @@ slug: writing-and-managing-tests
 
 ## Managing Test Execution: Phase objections
 
-**************Components or Sequences can raise or drop objections**************
+*Components or Sequences can raise or drop objections*
 
-**Phase continues until all raised objections are dropped**
+*Phase continues until all raised objections are dropped*
 
-**An objection must be raised at the beginning of the phase**
+*An objection must be raised at the beginning of the phase*
 
 ### Objections are hierarchical
 
-**********************************************************************Objections are raised up the hierarchy by default**********************************************************************
+*Objections are raised up the hierarchy by default*
 
 ![Untitled](Writing%20and%20managing%20Tests%2079e0d3fbda0b4ef1b25fdefc394cbb0f/Untitled%209.png)
 
 > Sequencer’s objection + Monitor’s objection = 2 agent’s objections
 > 
 
-**********************************Objections are dropped hierarchically too**********************************
+*Objections are dropped hierarchically too*
 
 ![Untitled](Writing%20and%20managing%20Tests%2079e0d3fbda0b4ef1b25fdefc394cbb0f/Untitled%2010.png)
 
-************************************************When a component’s count = 0, wait for `drain_time` to elapse**
+*When a component’s count = 0, wait for `drain_time` to elapse*
 
 ![Untitled](Writing%20and%20managing%20Tests%2079e0d3fbda0b4ef1b25fdefc394cbb0f/Untitled%2011.png)
 
