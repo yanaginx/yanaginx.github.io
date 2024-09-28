@@ -1,11 +1,11 @@
 ---
 slug: uvm-module-access
-title: Accessing tops module from class-based component in UVM testbench 
+titleTemplate: Accessing tops module from class-based component in UVM testbench 
 authors: duongvc
 tags: [SystemVerilog, UVM]
 ---
 
-# For 
+# Accessing tops module from class-based component in UVM testbench 
 
 ## Overview
 
@@ -31,7 +31,7 @@ For the workaround demonstration, a simple UVM testbench generated with [EasierU
 
 The DUT in this case is a simple ALU’s adder
 
-```verilog
+```system-verilog
 module adder (
     input  logic [7:0] A,
     input  logic [7:0] B,
@@ -44,7 +44,7 @@ endmodule
 
 The module wanted to be accessed from the test is the input generator (this is for demonstration purpose only, for normal UVM testbench this should be implemented as UVM driver-driver BFM pair)
 
-```verilog
+```system-verilog
 module input_model (
     input  logic clk,
     output logic [7:0] A,
@@ -82,7 +82,7 @@ endmodule : input_model
 
 The package containing the virtual class extending `uvm_object` → This will be used in other testbench’s class components
 
-```verilog
+```system-verilog
 package backdoor_access_pkg;
   import uvm_pkg::*;
 
@@ -100,7 +100,7 @@ endpackage : backdoor_access_pkg
 
 The wrapper class for the module that extends and implement all the virtual methods of the created virtual class
 
-```verilog
+```system-verilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 import backdoor_access_pkg::*;
@@ -127,7 +127,7 @@ end
 - Adding the handle to the `uvm_config_db` under `uvm_root::get()` as the parent, `*` as the scope, key string and the handle itself:
 - Instantiating it in the `top.sv` , (`top_tb.sv` in this example)
 
-```verilog
+```system-verilog
 module top_tb;
 
   timeunit      1ns;
@@ -171,7 +171,7 @@ endmodule
 
 Including the packages in the environment (in this case in the agent’s package)
 
-```verilog
+```system-verilog
 package arith_pkg;
 
   `include "uvm_macros.svh"
@@ -193,7 +193,7 @@ endpackage : arith_pkg
 
 And the remaining is to access the module from the test using the virtual class, by fetching the handle from the `uvm_config_db` as an `uvm_object` and cast it to the correct type of the virtual class
 
-```verilog
+```system-verilog
 `ifndef TOP_TEST_SV
 `define TOP_TEST_SV
 
@@ -275,10 +275,14 @@ Full testbench can be found [here](https://github.com/yanaginx/uvm-module-access
 - Create a wrapper *class* for the module that extends and implement all the virtual methods of the created virtual class
     - Instantiating it in the `top.sv`
     - Adding the handle to the `uvm_config_db` under `uvm_root::get()` as the parent, `*` as the scope, key string and the handle itself:
-        
-        
-        uvm_config_db #(uvm_object)::set(uvm_root::get(), "*", "<KEY>", <wrapper_handle>);
-        
+    ```system-verilog
+    uvm_config_db #(uvm_object)::set(
+      uvm_root::get(), 
+      "*", 
+      "<KEY>", 
+      <wrapper_handle>
+    );
+    ``` 
         
     
     > This will ensure the scope of the statement used to call the `top`'s instantiated module.

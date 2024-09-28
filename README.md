@@ -1,0 +1,1 @@
+# yanaginx.github.io
