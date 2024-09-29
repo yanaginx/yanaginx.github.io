@@ -28,7 +28,7 @@ slug: how-tlm-works
 
 ### Port-to-Export
 
-```verilog
+```system-verilog
 port.connect(export);
 ```
 
@@ -36,7 +36,7 @@ port.connect(export);
 
 ### Port-to-Port
 
-```verilog
+```system-verilog
 child.port.connect(parent_port);
 ```
 
@@ -44,7 +44,7 @@ child.port.connect(parent_port);
 
 ### Export-to-Export
 
-```verilog
+```system-verilog
 parent_export.connect(child.export);
 ```
 

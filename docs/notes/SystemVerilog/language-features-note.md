@@ -9,7 +9,7 @@ slug: language-features-note
     - They evaluate top down
     - Example
     
-    ```verilog
+    ```system-verilog
     `define TOTAL_ENTRIES 10
     `define OUTPUT_WIDTH 8
     
@@ -43,7 +43,7 @@ slug: language-features-note
 - For using `import pkg::class` statement
     - The `import` only valid till the first class definition only
         
-        ```verilog
+        ```system-verilog
         import pkg::a;
         
         class b extends c;

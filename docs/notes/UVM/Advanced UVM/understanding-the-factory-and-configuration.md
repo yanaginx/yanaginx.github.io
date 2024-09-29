@@ -39,7 +39,7 @@ slug: understanding-the-factory-and-configuration
 > Objects are registered with the factory via macros
 > 
 
-```verilog
+```system-verilog
 `uvm_object_utils(<type>)
 `uvm_component_utils(<type>)
 ```
@@ -138,7 +138,7 @@ The `build_phase` happens top-down, so when setting the value of driver’s x, t
 - No casting on `get()`
 - Linked to component hierarchy
 
-```verilog
+```system-verilog
 uvm_config_db #(<type>)::set(this, "<inst>", "<field>", value);
 uvm_config_db #(<type>)::get(this, "<inst>", "<field>", value);
 ```

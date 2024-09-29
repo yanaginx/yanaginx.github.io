@@ -39,7 +39,7 @@ slug: using-the-register-layer
 
 *A typical register access only needs a few of the arguments:*
 
-```verilog
+```system-verilog
 spi_rm.ctrl.write(status, wdata, .parent(this));
 ```
 
@@ -50,7 +50,7 @@ spi_rm.ctrl.write(status, wdata, .parent(this));
 
 *Consume time on the bus (default)*
 
-```verilog
+```system-verilog
 spi_rm.ctrl.write(status, wdata, UVM_FRONTDOOR, .parent(this));
 spi_rm.ctrl.read(status, rdata, UVM_FRONTDOOR, .parent(this));
 ```
@@ -63,7 +63,7 @@ UVM reg sequence API alternatively:
 > Recommended to use 
 > 
 
-```verilog
+```system-verilog
 write_reg(model.ctrl, status, wdata, UVM_FRONTDOOR);
 read_reg(model.ctrl, status, rdata, UVM_FRONTDOOR);
 ```
@@ -88,7 +88,7 @@ read_reg(model.ctrl, status, rdata, UVM_FRONTDOOR);
 
 *Consume no time on the bus*
 
-```verilog
+```system-verilog
 write_reg(model.ctrl, status, wdata, UVM_BACKDOOR);
 read_reg(model.ctrl, status, rdata, UVM_BACKDOOR);
 ```
@@ -108,7 +108,7 @@ read_reg(model.ctrl, status, rdata, UVM_BACKDOOR);
 
 *Using peek/poke:*
 
-```verilog
+```system-verilog
 poke_reg(model.ctrl, status, wdata);
 peek_reg(model.ctrl, status, rdata);
 ```
@@ -132,7 +132,7 @@ peek_reg(model.ctrl, status, rdata);
 
 *Access the desired value directly*
 
-```verilog
+```system-verilog
 model.ctrl.set(wdata);
 model.ctrl.randomize();
 rdata = model.ctrl.get();

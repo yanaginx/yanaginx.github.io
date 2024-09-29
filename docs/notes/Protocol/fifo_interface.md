@@ -34,7 +34,7 @@ The positive clock edge marked with arrow indicating the transfer of the data is
 
 ### Transmitter
 
-```verilog
+```system-verilog
 module transmitter(
   input clk,
   input rst_n,
@@ -140,7 +140,7 @@ endmodule
 
 ### Receiver
 
-```verilog
+```system-verilog
 module receiver(
   input clk,
   input rst_n,
@@ -239,7 +239,7 @@ endmodule
 
 ### Testbench
 
-```verilog
+```system-verilog
 module test_top;
   reg _clk;
   reg _rst_n;

@@ -50,7 +50,7 @@ slug: architecting-a-uvm-testbench
 > UVM execution is controlled by phases
 > 
 
-```verilog
+```system-verilog
 <task/func> phasename_phase (uvm_phase phase);
 ```
 

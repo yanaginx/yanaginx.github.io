@@ -87,7 +87,7 @@ slug: registered-based-testing
 - `mem.read()`/`mem.write()` to location x in memory y
 - The memory location address offset is calculated
     
-    ```verilog
+    ```system-verilog
     mem.read(status, offset_addr, data, ...);
     mem.write(status, offset_addr, data, ...);
     ```
