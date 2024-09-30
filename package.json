@@ -2,9 +2,14 @@
   "name": "yanaginx.github.io",
   "packageManager": "yarn@4.5.0",
   "devDependencies": {
+    "@iconify/json": "^2.2.254",
+    "anu-vue": "^0.15.2",
+    "date-fns": "^4.1.0",
+    "unocss": "^0.63.1",
     "vitepress": "^1.3.4",
     "vitepress-sidebar": "^1.27.1"
   },
+  "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",

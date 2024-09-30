@@ -8,11 +8,11 @@ hero:
   tagline: Learning through every experience
   actions:
     - theme: brand
-      text: Notes
-      link: /notes/
+      text: Get Started
+      link: /notes/intro
     - theme: alt
-      text: Blog
-      link: /blog/2022-12-29-uvm-module-access
+      text: See the blog
+      link: /blog/
 
 features:
   # - title: Feature A

@@ -1,21 +1,22 @@
 ---
-slug: uvm-module-access
-titleTemplate: Accessing tops module from class-based component in UVM testbench 
-authors: duongvc
-tags: [SystemVerilog, UVM]
+title: Accessing tops module from class-based component in UVM
+author: Duong Van
+date: 2022-12-29
+hide: true
+tags: uvm, systemverilog
+sidebar: false
 ---
 
-# Accessing tops module from class-based component in UVM testbench 
+The case for using this access is inside a UVM Testbench, where the test would generate some randomization on the data and need to access the instantiated module (let say `model` in this case) in the `top`.
+
+---
+
+<PostDetail>
 
 ## Overview
-
-The case for the need of this access is inside a UVM Testbench, where the test would generate some randomization on the data and need to access the instantiated module (let say `model` in this case) in the `top`. 
-
-<!-- One naive solution in my case is using UVM’s configuration database (`uvm_config_db`) to pass down the `model` handle from the top to the test component.
-
+One naive solution in my case is using UVM’s configuration database (`uvm_config_db`) to pass down the `model` handle from the top to the test component.
 The above solution won’t work since the module cannot be passed inside `uvm_config_db` 
-
-This is where the following solution should be useful. -->
+This is where the following solution should be useful.
 
 ## The workaround
 
@@ -25,7 +26,7 @@ For the workaround demonstration, a simple UVM testbench generated with [EasierU
 
 // Update the graph later with the model’s module
 
-![Untitled](For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled.png)
+![Untitled](../images/For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled.png)
 
 ### Implementation
 
@@ -255,15 +256,15 @@ Also remember to compile the `.sv` file and packages properly. The compiling seq
 
 The result when running the simulation
 
-![Untitled](For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%201.png)
+![Untitled](../images/For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%201.png)
 
 The result when dumping signals, by adding some signals on `top_th.sv` and a little addition on `top_tb.sv` file
 
-![Untitled](For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%202.png)
+![Untitled](../images/For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%202.png)
 
-![Untitled](For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%203.png)
+![Untitled](../images/For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%203.png)
 
-![Untitled](For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%204.png)
+![Untitled](../images/For%20accessing%20tops%20module%20from%20class-based%20compon%20f0f32d102515407f82fdf2c3ef9b8779/Untitled%204.png)
 
 This result concludes the ability to manipulate the module that is instantiated on the `top` from a test component in UVM testbench
 
@@ -291,3 +292,5 @@ Full testbench can be found [here](https://github.com/yanaginx/uvm-module-access
     > Meaning the statement `top.<module_name>.<method_name>()` should be valid.
     > 
 - The virtual class `VC` mentioned above will be used for the lower level component in the environment hierarchy for accessing the top instantiated module’s methods.
+
+</PostDetail>

@@ -1,3 +1,9 @@
+---
+sidebar: false
+next: false
+prev: false
+---
+
 # The site
 
 Hello, and welcome to my personal website!
