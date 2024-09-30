@@ -32,7 +32,7 @@ For the workaround demonstration, a simple UVM testbench generated with [EasierU
 
 The DUT in this case is a simple ALU’s adder
 
-```system-verilog
+```system-verilog:line-numbers
 module adder (
     input  logic [7:0] A,
     input  logic [7:0] B,
@@ -45,7 +45,7 @@ endmodule
 
 The module wanted to be accessed from the test is the input generator (this is for demonstration purpose only, for normal UVM testbench this should be implemented as UVM driver-driver BFM pair)
 
-```system-verilog
+```system-verilog:line-numbers
 module input_model (
     input  logic clk,
     output logic [7:0] A,
@@ -83,7 +83,7 @@ endmodule : input_model
 
 The package containing the virtual class extending `uvm_object` → This will be used in other testbench’s class components
 
-```system-verilog
+```system-verilog:line-numbers
 package backdoor_access_pkg;
   import uvm_pkg::*;
 
@@ -101,7 +101,7 @@ endpackage : backdoor_access_pkg
 
 The wrapper class for the module that extends and implement all the virtual methods of the created virtual class
 
-```system-verilog
+```system-verilog:line-numbers{12}
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 import backdoor_access_pkg::*;
@@ -113,7 +113,7 @@ class backdoor_im extends input_model_backdoor;
   endfunction : new 
 
   function void insert(logic[7:0] value);
-    **top_tb.th.model.insert_input(value);**
+    top_tb.th.model.insert_input(value);
   endfunction : insert
             
 endclass : backdoor_im
@@ -128,7 +128,7 @@ end
 - Adding the handle to the `uvm_config_db` under `uvm_root::get()` as the parent, `*` as the scope, key string and the handle itself:
 - Instantiating it in the `top.sv` , (`top_tb.sv` in this example)
 
-```system-verilog
+```system-verilog:line-numbers{19}
 module top_tb;
 
   timeunit      1ns;
@@ -147,7 +147,7 @@ module top_tb;
   // Test harness
   top_th th();
 
-  **`include "backdoor_input_model.sv"**
+  `include "backdoor_input_model.sv"
 
   initial
   begin
@@ -172,7 +172,7 @@ endmodule
 
 Including the packages in the environment (in this case in the agent’s package)
 
-```system-verilog
+```system-verilog:line-numbers
 package arith_pkg;
 
   `include "uvm_macros.svh"
@@ -194,7 +194,7 @@ endpackage : arith_pkg
 
 And the remaining is to access the module from the test using the virtual class, by fetching the handle from the `uvm_config_db` as an `uvm_object` and cast it to the correct type of the virtual class
 
-```system-verilog
+```system-verilog:line-numbers{35-41}
 `ifndef TOP_TEST_SV
 `define TOP_TEST_SV
 
@@ -229,13 +229,13 @@ function void top_test::build_phase(uvm_phase phase);
   m_env = top_env::type_id::create("m_env", this);
 
   // Fetching the handle from the uvm_config_db and cast it to the correct type
-  **if(!uvm_config_db#(uvm_object)::get(uvm_root::get(), "", "IM_BACKDOOR_ACCESS", backdoor_object_i))   
+  if(!uvm_config_db#(uvm_object)::get(uvm_root::get(), "", "IM_BACKDOOR_ACCESS", backdoor_object_i))   
   begin
     `uvm_fatal("TEST","Failed to get input model backdoor access object")
   end
   assert($cast(backdoor_im_i, backdoor_object_i)) else begin
     `uvm_fatal("ASSERT", "Dynamic casting backdoor_im_instance failed!")
-  end**
+  end
 
 endfunction : build_phase
 
@@ -276,7 +276,7 @@ Full testbench can be found [here](https://github.com/yanaginx/uvm-module-access
 - Create a wrapper *class* for the module that extends and implement all the virtual methods of the created virtual class
     - Instantiating it in the `top.sv`
     - Adding the handle to the `uvm_config_db` under `uvm_root::get()` as the parent, `*` as the scope, key string and the handle itself:
-    ```system-verilog
+    ```system-verilog:line-numbers
     uvm_config_db #(uvm_object)::set(
       uvm_root::get(), 
       "*", 
