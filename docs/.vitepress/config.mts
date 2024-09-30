@@ -61,7 +61,6 @@ const vitepressSidebarOptions = {
 export default defineConfig({
   title: "DV Depot",
   description: "Casual thoughts, musings and whatever else is on the mind.",
-  cleanUrls: true,
   lastUpdated: true,
 
   themeConfig: {
