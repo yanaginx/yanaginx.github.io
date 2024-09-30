@@ -5,6 +5,8 @@ date: 2022-12-29
 hide: true
 tags: uvm, systemverilog
 sidebar: false
+next: false
+prev: false
 ---
 
 The case for using this access is inside a UVM Testbench, where the test would generate some randomization on the data and need to access the instantiated module (let say `model` in this case) in the `top`.
