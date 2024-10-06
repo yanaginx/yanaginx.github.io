@@ -5,7 +5,7 @@ const { frontmatter, title } = useData()
 </script>
 
 <template>
-  <div v-if="frontmatter.comments !== false" :key="title" class="giscus">
+  <div v-if="frontmatter.comments !== false" :key="title" class="giscus m-3">
     <component
       :is="'script'"
       src="https://giscus.app/client.js"

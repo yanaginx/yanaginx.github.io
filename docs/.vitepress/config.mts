@@ -54,6 +54,8 @@ const vitepressSidebarOptions = {
   capitalizeFirst: true,
   collapsed: true,
   manualSortFileNameByPriority: ['notes/intro.md', 'notes'],
+  useFolderTitleFromIndexFile: true,
+  sortMenusOrderByDescending: true,
   excludePattern: ['blog/**', 'extras/**'],
 };
 
@@ -80,7 +82,8 @@ export default defineConfig({
     sidebar: generateSidebar(vitepressSidebarOptions),
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yanaginx/yanaginx.github.io' }
+      { icon: 'github', link: 'https://github.com/yanaginx/yanaginx.github.io' },
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/chanduong-van/'}
     ],
 
     search: {
@@ -96,7 +99,8 @@ export default defineConfig({
     theme: {
       light: 'vitesse-light',
       dark: 'vitesse-black'
-    }
+    },
+    math: true,
   },
   vite: {
     plugins: [
