@@ -9,6 +9,8 @@ import PostDetail from './components/blog/PostDetail.vue'
 import PostIcon from './components/blog/PostIcon.vue'
 import PostAuthor from './components/blog/PostAuthor.vue'
 import AuthorDetail from './components/blog/AuthorDetail.vue'
+import Layout from './Layout.vue'
+
 // https://vitepress.dev/guide/custom-theme
 
 export default {
@@ -23,4 +25,5 @@ export default {
     app.component('PostAuthor', PostAuthor)
     app.component('AuthorDetail', AuthorDetail)
   },
+  Layout: Layout
 }

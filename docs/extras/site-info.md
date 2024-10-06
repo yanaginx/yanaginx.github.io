@@ -2,6 +2,7 @@
 sidebar: false
 next: false
 prev: false
+comments: false
 ---
 
 # The site

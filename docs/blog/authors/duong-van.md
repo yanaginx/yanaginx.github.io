@@ -4,6 +4,8 @@ avatar: https://github.com/yanaginx.png
 sidebar: false
 next: false
 prev: false
+editLink: false
+comments: false
 ---
 
 <AuthorDetail>
