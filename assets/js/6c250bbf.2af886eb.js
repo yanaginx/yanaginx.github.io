@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[742],{422:e=>{e.exports=JSON.parse('{"label":"SystemVerilog","permalink":"/blog/tags/system-verilog","allTagsPath":"/blog/tags","count":1}')}}]);
