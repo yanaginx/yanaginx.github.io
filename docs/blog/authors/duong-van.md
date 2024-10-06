@@ -1,6 +1,9 @@
 ---
 name: Duong Van
 avatar: https://github.com/yanaginx.png
+sidebar: false
+next: false
+prev: false
 ---
 
 <AuthorDetail>
