@@ -10,10 +10,10 @@ const { theme } = useData()
 <template>
   <div class="mx-auto max-w-screen-xl lg:py-16 lg:px-6">
     <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-      <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)]">
+      <h2 class="blog-list-title">
         {{ theme.blog?.title }}
       </h2>
-      <p class="font-light sm:text-xl text-[color:var(--vp-c-text-light-1)] dark:text-[color:var(--vp-c-text-dark-1)]">
+      <p class="blog-list-desc">
         {{ theme.blog?.description }}
       </p>
     </div>
@@ -24,4 +24,23 @@ const { theme } = useData()
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Swiss–Bauhaus blog list header */
+.blog-list-title {
+  font-family: 'Space Grotesk', 'Inter', ui-sans-serif, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.75rem;
+}
+
+.blog-list-desc {
+  font-size: 1.05rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+}
+</style>
 

@@ -1,6 +1,7 @@
 import Unocss from 'unocss/vite'
 import { defineConfig, type DefaultTheme } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar';
+import { InlineLinkPreviewElementTransform } from '@nolebase/vitepress-plugin-inline-link-preview/markdown-it'
 
 const vitepressSidebarOptions = {
   // {
@@ -90,6 +91,11 @@ export default defineConfig({
       provider: 'local'
     },
 
+    outline: {
+      level: 'deep',
+      label: 'On this page',
+    },
+
     blog: {
       title: 'The Blogs',
       description: 'Random thought and implementation on the go.',
@@ -101,6 +107,9 @@ export default defineConfig({
       dark: 'vitesse-black'
     },
     math: true,
+    config(md) {
+      md.use(InlineLinkPreviewElementTransform)
+    },
   },
   vite: {
     plugins: [
@@ -108,6 +117,21 @@ export default defineConfig({
         configFile: '../../unocss.config.ts',
       }),
     ],
+    optimizeDeps: {
+      exclude: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities/client',
+        '@nolebase/vitepress-plugin-inline-link-preview/client',
+        'vitepress',
+        '@nolebase/ui',
+      ],
+    },
+    ssr: {
+      noExternal: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        '@nolebase/vitepress-plugin-inline-link-preview',
+        '@nolebase/ui',
+      ],
+    },
   },
 })
 

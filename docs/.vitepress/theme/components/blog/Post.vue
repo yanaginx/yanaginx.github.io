@@ -14,40 +14,105 @@ const author = findByName(props.post.author)
 </script>
 
 <template>
-  <article
-    class="p-6 rounded-lg border border-[color:var(--vp-c-brand-light)] shadow-md dark:border-[color:var(--vp-c-brand-dark)]"
-  >
-    <div class="flex justify-between items-center mb-5 text-gray-500">
-      <span
-        class="bg-primary-100 text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)] text-sm font-medium inline-flex items-center rounded"
-      >
-        <PostIcon :post="post">
-          <span class="text-sm">{{ post.date.since }}</span>
-        </posticon></span>
+  <!-- Swiss–Bauhaus card: thick top accent bar, flat, sharp corners, no shadow -->
+  <article class="post-card">
+    <div class="post-meta">
+      <PostIcon :post="post">
+        <span class="post-date">{{ post.date.since }}</span>
+      </PostIcon>
     </div>
-    <h2 class="mb-2 text-2xl font-bold tracking-tight text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)]">
-      <a
-        :href="`${site.base}blog${post.href}`"
-      >{{ post.title }}</a>
+    <h2 class="post-title">
+      <a :href="`${site.base}blog${post.href}`">{{ post.title }}</a>
     </h2>
-    <p class="mb-5 font-light" v-html="post.excerpt" />
-    <div class="flex justify-between items-center">
+    <p class="post-excerpt" v-html="post.excerpt" />
+    <div class="post-footer">
       <PostAuthor :author="author" />
       <a
         :href="`${site.base}blog${post.href}`"
-        class="inline-flex items-center font-medium hover:text-[color:var(--vp-c-brand-dark)]"
+        class="post-readmore"
       >
-        Read more
-        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill-rule="evenodd"
-            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
-        </svg>
+        Read →
       </a>
     </div>
   </article>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Swiss–Bauhaus flat card */
+.post-card {
+  padding: 1.5rem;
+  border-top: 3px solid var(--vp-c-brand-1);
+  border-left: 1px solid var(--vp-c-divider);
+  border-right: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  transition: border-top-color 0.15s ease;
+}
+
+.post-card:hover {
+  border-top-color: var(--vp-c-brand-2);
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--vp-c-text-2);
+}
+
+.post-date {
+  font-size: 0.75rem;
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+
+.post-title {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.65rem 0;
+  letter-spacing: -0.01em;
+}
+
+.post-title a {
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.post-title a:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.post-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+  margin: 0 0 1.25rem 0;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-readmore {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  transition: letter-spacing 0.15s ease;
+}
+
+.post-readmore:hover {
+  letter-spacing: 0.12em;
+}
+</style>
